@@ -3,7 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { User } from '../../models/user/user';
 import { AuthenticationService } from '../../login/login.service';
-import {SAQuiz} from '../../models/quiz/SAQuiz'
+import {SAQuiz} from '../../models/quiz/SAQuiz';
+import {QuizServiceComponent} from '../../service/quiz/quiz-service.component';
 
 import {QuestionCreatedwithAnswer} from '../../models/quiz/QuestionCreatedWithAnswer'
 import {QuestionOptions} from '../../models/quiz/QuestionOptions'
@@ -48,7 +49,7 @@ export class SAQuizComponent implements OnInit {
     constructor(
         private route: ActivatedRoute,
         private router: Router,
-        private authenticationService: AuthenticationService
+        private quizService: QuizServiceComponent
   ){}
     setTopic(){
         
@@ -75,7 +76,10 @@ export class SAQuizComponent implements OnInit {
         return this.wasNotSaved;
     }
     createNewQuiz(){
+        console.log("fkin forms");
+        this.quizService.saveQuiz(this.quiz);
         this.wasNotSaved = false;
+        this.router.navigate(['/professor']);
     }
 
 

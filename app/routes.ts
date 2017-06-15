@@ -9,8 +9,8 @@ import {SAQuizComponent} from './professor/createquiz/sa-quiz.component'
 export const AppRoutes:Routes = [
     {path : 'login', component: LoginComponent},
     {path : 'create/sa' ,component : SAQuizComponent, canActivate: [LoginRouteActivator], data: { roles: ['ADMIN']}, canDeactivate:["canDeactivateQuizCreation"]},
-    {path : 'student/:id', component: StudentMainComponent,  canActivate: [LoginRouteActivator], data: { roles: ['NORMAL_USER']}},
-    {path : 'professor/:id', component: ProfessorMainComponent,  canActivate: [LoginRouteActivator], data: { roles: ['ADMIN']}},
+    {path : 'student', component: StudentMainComponent,  canActivate: [LoginRouteActivator], data: { roles: ['NORMAL_USER']}},
+    {path : 'professor', component: ProfessorMainComponent,  canActivate: [LoginRouteActivator], data: { roles: ['ADMIN']}},
     {path : '', redirectTo :'/login', pathMatch : 'full'},
     {path: '**', redirectTo: '/login' }
 

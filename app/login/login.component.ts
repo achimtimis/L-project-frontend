@@ -35,9 +35,9 @@ export class LoginComponent implements OnInit {
       data => {
         this.user = JSON.parse(localStorage.getItem('currentUser'));
         if (this.user.role === "ADMIN"){
-          this.router.navigate(['/professor/1'])
+          this.router.navigate(['/professor'])
         }else{
-          this.router.navigate(['/student/1']);
+          this.router.navigate(['/student']);
         }
       },
       error => {

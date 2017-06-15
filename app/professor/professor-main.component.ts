@@ -4,7 +4,7 @@ import { Component, OnInit } from '@angular/core';
 @Component({
     template: `
     <prof-nav-bar></prof-nav-bar>
-    Hello professor`
+    <router-outlet></router-outlet>`
 })
 
 export class ProfessorMainComponent {

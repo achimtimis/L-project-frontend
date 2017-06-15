@@ -23,10 +23,9 @@ import {AppRoutes} from './routes';
   imports: [BrowserModule, FormsModule, HttpModule, RouterModule.forRoot(AppRoutes)],
   declarations: [QuizAppComponent, LoginComponent, DefaultNavComponent,
      StudentMainComponent, StudentNavComponent,ProffessorNavComponent, ProfessorMainComponent,
-     SAQuizComponent,
-     QuizServiceComponent],
+     SAQuizComponent],
   bootstrap: [QuizAppComponent],
-  providers: [AuthenticationService,
+  providers: [AuthenticationService,QuizServiceComponent,
   {provide : "canDeactivateQuizCreation", useValue: checkFormWasPosted},
   {provide: LocationStrategy, useClass: HashLocationStrategy}, LoginRouteActivator]
 })

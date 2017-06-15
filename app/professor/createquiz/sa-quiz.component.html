@@ -1,3 +1,4 @@
+<prof-nav-bar></prof-nav-bar>	
 <h2> Create Single Answer Quiz</h2>
 <p>quiz topic is {{quiz?.topic}}</p>
 <p>creator id is {{quiz?.creatorId}}</p>
@@ -6,30 +7,30 @@
 <div class="col-md-6 col-md-offset-3">
 	<h2>Create a new Quiz</h2>
 
-	<form name="form" (ngSubmit)="f.form.valid && createNewQuiz()"
+	<form name="form" (ngSubmit)="createNewQuiz()"
 		#f="ngForm" novalidate>
 		<div class="form-group"
-			[ngClass]="{ 'has-error': f.submitted && !topic.valid }">
+			>
 			<label for="topic">Topic</label> <textarea 
 				class="form-control" name="topic"
-				[(ngModel)]="quiz.topic" #abstractText="ngModel" required ></textarea>
-			<div *ngIf="f.submitted && !topic.valid" class="help-block">topic
+				[(ngModel)]="quiz.topic" #abstractText="ngModel"  ></textarea>
+			<div *ngIf="f.submitted" class="help-block">topic
 				is required</div>
 		</div>
 		<div class="form-group"
-			[ngClass]="{ 'has-error': f.submitted && !isTimed.valid }">
+			>
 			<label for="isTimed">IsTimed</label> <input type="checkbox"
 				class="form-control" name="isTimed" [(ngModel)]="quiz.isTimed"
-				#name="ngModel" required />
-			<div *ngIf="f.submitted && !isTimed.valid" class="help-block">isTimed
+				#name="ngModel"  />
+			<div *ngIf="f.submitted" class="help-block">isTimed
 				is required</div>
 		</div>
 		<div class="form-group"
-			[ngClass]="{ 'has-error': f.submitted && !timer.valid }">
+			>
 			<label for="timer">Timer</label> <input type="text"
 				class="form-control" name="timer" [(ngModel)]="quiz.timer"
-				#documentType="ngModel" required />
-			<div *ngIf="f.submitted && !timer.valid" class="help-block">Timer
+				#documentType="ngModel"  />
+			<div *ngIf="f.submitted" class="help-block">Timer
 				is required</div>
 		</div>
 
