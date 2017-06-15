@@ -1,0 +1,75 @@
+<h2> Create Single Answer Quiz</h2>
+<p>quiz topic is {{quiz?.topic}}</p>
+<p>creator id is {{quiz?.creatorId}}</p>
+
+
+<div class="col-md-6 col-md-offset-3">
+	<h2>Create a new Quiz</h2>
+
+	<form name="form" (ngSubmit)="f.form.valid && createNewQuiz()"
+		#f="ngForm" novalidate>
+		<div class="form-group"
+			[ngClass]="{ 'has-error': f.submitted && !topic.valid }">
+			<label for="topic">Topic</label> <textarea 
+				class="form-control" name="topic"
+				[(ngModel)]="quiz.topic" #abstractText="ngModel" required ></textarea>
+			<div *ngIf="f.submitted && !topic.valid" class="help-block">topic
+				is required</div>
+		</div>
+		<div class="form-group"
+			[ngClass]="{ 'has-error': f.submitted && !isTimed.valid }">
+			<label for="isTimed">IsTimed</label> <input type="checkbox"
+				class="form-control" name="isTimed" [(ngModel)]="quiz.isTimed"
+				#name="ngModel" required />
+			<div *ngIf="f.submitted && !isTimed.valid" class="help-block">isTimed
+				is required</div>
+		</div>
+		<div class="form-group"
+			[ngClass]="{ 'has-error': f.submitted && !timer.valid }">
+			<label for="timer">Timer</label> <input type="text"
+				class="form-control" name="timer" [(ngModel)]="quiz.timer"
+				#documentType="ngModel" required />
+			<div *ngIf="f.submitted && !timer.valid" class="help-block">Timer
+				is required</div>
+		</div>
+
+		<h2>List of Questions</h2>
+		<ul class="questions">
+		<li *ngFor="let question of quiz.questionCreatedWithAnswers">
+			<p> Question: {{question.questionText}}, Score: {{question.score}}
+		</li>
+		</ul>
+
+        <h3> Add Question</h3>
+        <label for="questionText">Question Text</label> <input type="text"
+				class="form-control" name="questionText" [(ngModel)]="tempQ.questionText"
+				#documentType="ngModel" required />
+		<label for="value1">Question Options 1</label> <input type="text"
+				class="form-control" name="value1" [(ngModel)]="tempO1.value"
+				#documentType="ngModel" required />
+		<label for="value2">Question Options 2</label> <input type="text"
+				class="form-control" name="value2" [(ngModel)]="tempO2.value"
+				#documentType="ngModel" required />
+		<label for="value3">Question Options 3</label> <input type="text"
+				class="form-control" name="value3" [(ngModel)]="tempO3.value"
+				#documentType="ngModel" required />
+		<label for="value4">Question Options 4</label> <input type="text"
+				class="form-control" name="value4" [(ngModel)]="tempO4.value"
+				#documentType="ngModel" required />	
+		<label for="score">Question Score</label> <input type="text"
+				class="form-control" name="score" [(ngModel)]="tempQ.score"
+				#documentType="ngModel" required />	
+		
+		<label for="score">Correct Answers</label> <input type="text"
+				class="form-control" name="score" [(ngModel)]="tempCorrectAnswer"
+				#documentType="ngModel" required />
+
+		<button type="button" class="btn btn-default" (click)="addQuestion()">Add Question</button>
+		<h3>Done for question</h3>
+		<div class="form-group">
+			<button [disabled]="loading" class="btn btn-primary">Create</button>
+			<img *ngIf="loading"
+				src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+			<a [routerLink]="['/documents/manage']" class="btn btn-link">Cancel</a>
+		</div>
+	</form>

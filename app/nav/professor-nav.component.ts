@@ -2,14 +2,14 @@ import { Component } from "@angular/core";
 import { Router, ActivatedRoute } from '@angular/router';
 import { User } from '../models/user/user';
 import { AuthenticationService } from '../login/login.service';
+
 @Component(
  {
-     selector : 'student-nav-bar',
-     templateUrl: 'app/nav/student-nav.component.html'
+     selector : 'prof-nav-bar',
+     templateUrl: 'app/nav/professor-nav.component.html'
  }   
 )
-export class StudentNavComponent{
-
+export class ProffessorNavComponent{
 constructor(
     private route: ActivatedRoute,
     private router: Router,

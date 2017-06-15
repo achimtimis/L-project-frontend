@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 // import { Router, ActivatedRoute } from '@angular/router';
-
+import { Router, ActivatedRoute } from '@angular/router';
+import { User } from '../models/user/user';
+import { AuthenticationService } from '../login/login.service';
 @Component({
     template: `
     <student-nav-bar></student-nav-bar>
@@ -8,4 +10,11 @@ import { Component, OnInit } from '@angular/core';
 })
 
 export class StudentMainComponent {
+
+    constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private authenticationService: AuthenticationService
+  ){}
+
 }

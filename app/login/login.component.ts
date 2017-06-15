@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { User } from '../models/user';
+import { User } from '../models/user/user';
 import { AuthenticationService } from './login.service';
 
 @Component({
@@ -34,7 +34,11 @@ export class LoginComponent implements OnInit {
     .subscribe(
       data => {
         this.user = JSON.parse(localStorage.getItem('currentUser'));
-        this.router.navigate(['/student/1']);
+        if (this.user.role === "ADMIN"){
+          this.router.navigate(['/professor/1'])
+        }else{
+          this.router.navigate(['/student/1']);
+        }
       },
       error => {
     //     // this.alertService.error(error);
