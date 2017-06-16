@@ -9,9 +9,11 @@ import {QuizResponseComponent} from './student/quizes/quizresponse/quiz-response
 import {QuizResultListComponent} from './student/quizresult/quizresult-list.component'
 import {QuizResultComponent} from './student/quizresult/quizresult.component'
 
+
 export const AppRoutes:Routes = [
     {path : 'login', component: LoginComponent},
     {path : 'create/sa' ,component : SAQuizComponent, canActivate: [LoginRouteActivator], data: { roles: ['ADMIN']}, canDeactivate:["canDeactivateQuizCreation"]},
+    {path: 'student/results/quiz', component:QuizResultComponent, canActivate: [LoginRouteActivator], data: { roles: ['NORMAL_USER']}} ,
     {path: 'student/results', component:QuizResultListComponent, canActivate: [LoginRouteActivator], data: { roles: ['NORMAL_USER']}} ,
     {path : 'student', component: StudentMainComponent,  canActivate: [LoginRouteActivator], data: { roles: ['NORMAL_USER']}},
     {path : 'professor', component: ProfessorMainComponent, canActivate: [LoginRouteActivator], data: { roles: ['ADMIN']}},
@@ -19,4 +21,4 @@ export const AppRoutes:Routes = [
     {path : '', redirectTo :'/login', pathMatch : 'full'},
     {path: '**', redirectTo: '/login' }
 
-]
+]   

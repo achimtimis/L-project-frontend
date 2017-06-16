@@ -65,4 +65,12 @@ export class QuizServiceComponent {
         }).map(res => res.json());
     }
 
+    getQuizResultForAStudentById(student_id:string, quiz_id:number): Observable<QuizStudentResultResponse>{
+        var url = 'http://localhost:8002/quiz/result/' + student_id +'/' + quiz_id;
+        return this.http.get(url, { headers: new Headers({
+                'Content-Type': 'application/json'
+            })
+        }).map(res => res.json());
+    }
+
 }
