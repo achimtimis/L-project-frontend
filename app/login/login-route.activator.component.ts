@@ -6,7 +6,9 @@ import { Router, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from
 export class LoginRouteActivator implements CanActivate{
       constructor(private router: Router) { }
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
+    console.log("is it here?");
     if (!localStorage.getItem('currentUser')) {
+      console.log("it did not find a user");
       this.router.navigate(['/login'], { queryParams: { returnUrl: state.url } });
       return false;
     }
@@ -30,6 +32,7 @@ export class LoginRouteActivator implements CanActivate{
     if (exist) {
       return true;
     }
+    console.log("it did not what");
     this.router.navigate(['/login'], { queryParams: { returnUrl: state.url } });
     return false;
     // return true;

@@ -2,6 +2,6 @@
 
 <ul class="quizes">
 		<li *ngFor="let quiz of quizes">
-			<p> Quiz: {{quiz.topic}}, Type: {{quiz.quizType}}, isTimed: {{quiz.isTimed}}
+			<button class = "btn btn-default" (click)="getQuiz(quiz.quiz_id)"> Quiz: {{quiz.topic}}, Type: {{quiz.quizType}}, isTimed: {{quiz.isTimed}}</button>
 		</li>
 </ul>

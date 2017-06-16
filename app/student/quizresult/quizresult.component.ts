@@ -6,10 +6,10 @@ import { QuizServiceComponent } from '../../service/quiz/quiz-service.component'
 import { QuizRequest} from '../../models/quiz/QuizRequest'
 
 @Component({
-    selector: 'student-quiz-list',
-    templateUrl : 'app/student/quizes/quiz-list.component.html'
+    selector: 'student-quiz-result',
+    templateUrl : 'app/student/quizresult/quizresult.component.html'
 })
-export class QuizListComponent implements OnInit {
+export class QuizResultComponent implements OnInit {
         ngOnInit(): void {
             this.quizes = new Array();
             let tempUser = JSON.parse(localStorage.getItem('currentUser'));

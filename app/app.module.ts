@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core'
+import { CommonModule } from '@angular/common';  
 import { BrowserModule } from '@angular/platform-browser'
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
@@ -18,17 +19,22 @@ import {LoginRouteActivator} from './login/login-route.activator.component'
 import {QuizServiceComponent} from './service/quiz/quiz-service.component'
 import {SAQuizComponent} from './professor/createquiz/sa-quiz.component'
 import {QuizListComponent} from './student/quizes/quiz-list.component'
+import {QuizResponseComponent} from './student/quizes/quizresponse/quiz-response.component'
+import {QuizResultListComponent} from './student/quizresult/quizresult-list.component'
+import {QuizResultComponent} from './student/quizresult/quizresult.component'
 import {AppRoutes} from './routes'; 
 
 @NgModule({
-  imports: [BrowserModule, FormsModule, HttpModule, RouterModule.forRoot(AppRoutes)],
+  imports: [BrowserModule, FormsModule, HttpModule, RouterModule.forRoot(AppRoutes), CommonModule],
   declarations: [QuizAppComponent, LoginComponent, DefaultNavComponent,
      StudentMainComponent, StudentNavComponent,ProffessorNavComponent, ProfessorMainComponent,
      SAQuizComponent,
-     QuizListComponent],
+     QuizListComponent,
+     QuizResponseComponent,QuizResultListComponent, QuizResultComponent],
   bootstrap: [QuizAppComponent],
   providers: [AuthenticationService,QuizServiceComponent,
   {provide : "canDeactivateQuizCreation", useValue: checkFormWasPosted},
+  {provide : "canDezactivateQuizResponse", useValue: checkResponseFormWasPosted},
   {provide: LocationStrategy, useClass: HashLocationStrategy}, LoginRouteActivator]
 })
 export class AppModule {}
@@ -39,4 +45,11 @@ function checkFormWasPosted(component: SAQuizComponent){
     }
     return true;
 
+}
+
+function checkResponseFormWasPosted(component: QuizResponseComponent){
+  if(component.getFormState()){
+      return window.confirm('You have not sent this quiz response. Do you really want to cancel?');
+    }
+    return true;
 }

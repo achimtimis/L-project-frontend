@@ -3,37 +3,38 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { User } from '../../models/user/user';
 import { QuizServiceComponent } from '../../service/quiz/quiz-service.component';
-import { QuizRequest} from '../../models/quiz/QuizRequest'
+import { QuizRequest} from '../../models/quiz/QuizRequest';
+import {QuizStudentResultResponse} from '../../models/quiz/QuizStudentResultResponse'
 
 @Component({
-    selector: 'student-quiz-list',
-    templateUrl : 'app/student/quizes/quiz-list.component.html'
+    templateUrl : 'app/student/quizresult/quizresult.list.component.html'
 })
-export class QuizListComponent implements OnInit {
+export class QuizResultListComponent implements OnInit {
         ngOnInit(): void {
-            this.quizes = new Array();
+            this.results = new Array();
             let tempUser = JSON.parse(localStorage.getItem('currentUser'));
             console.log(tempUser);
             this.userid = tempUser.username;
-            this.getAllQuizes();
+            this.getAllQuizesResults();
             
         }
+    isDataAvailable: boolean = false;
+    wasNotSaved = true;
     userid:string;
-    quizes: QuizRequest[];
+    results: QuizStudentResultResponse[];
     constructor(
     private route: ActivatedRoute,
     private router: Router,
     private quizService: QuizServiceComponent
   ){}
 
-  getAllQuizes(){
-      this.quizService.getAllQuizes(this.userid).subscribe(quizes => this.quizes = quizes,
+  getAllQuizesResults(){
+      this.quizService.getAllQuizResultForAStudent(this.userid).subscribe(results =>{
+       this.results = results;
+       console.log("results loaded", this.results);
+       this.isDataAvailable = true;
+},
       err => console.log("error fetchig quizes"));
-  }
-
-  getQuiz(quiz_id:number){
-      console.log("clicked on quizid:", quiz_id);
-      this.router.navigate(['/quiz'], { queryParams: { quiz_id: quiz_id } });
   }
 
 }

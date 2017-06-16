@@ -5,6 +5,8 @@ import { Http, Headers, Response, URLSearchParams } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import { SAQuiz } from '../../models/quiz/SAQuiz';
 import {QuizRequest} from '../../models/quiz/QuizRequest';
+import {QuizResponseRequest} from '../../models/quiz/QuizResponseRequest'
+import {QuizStudentResultResponse} from '../../models/quiz/QuizStudentResultResponse'
 
 import 'rxjs/add/operator/map'
 @Injectable()
@@ -30,12 +32,37 @@ export class QuizServiceComponent {
         // }
     }
 
-    getAllQuizes(): Observable<QuizRequest[]>{
-        return this.http.get('http://localhost:8002/quizes', { headers: new Headers({
+    getAllQuizes(userid:string): Observable<QuizRequest[]>{
+        return this.http.get('http://localhost:8002/quizes/'+userid, { headers: new Headers({
                 'Content-Type': 'application/json'
             })
         }).map(res => res.json());
 
+    }
+
+    getQuizByid(quiz_id:number){
+        var url = 'http://localhost:8002/quiz/'+ quiz_id;
+        return this.http.get(url, { headers: new Headers({
+                'Content-Type': 'application/json'
+            })
+        }).map(res => res.json());
+    }
+
+    saveQuizResponse(quizResponse:QuizResponseRequest){
+        var url = 'http://localhost:8002/quiz/response';
+        this.http.post(url, quizResponse, {
+            headers: new Headers({
+                'Content-Type': 'application/json'
+            })
+        })
+            .map(res => res.json()).subscribe();
+    }
+    getAllQuizResultForAStudent(student_id:string): Observable<QuizStudentResultResponse[]>{
+        var url = 'http://localhost:8002/quiz/result/' + student_id;
+        return this.http.get(url, { headers: new Headers({
+                'Content-Type': 'application/json'
+            })
+        }).map(res => res.json());
     }
 
 }
