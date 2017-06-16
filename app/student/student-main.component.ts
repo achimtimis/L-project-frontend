@@ -6,7 +6,8 @@ import { AuthenticationService } from '../login/login.service';
 @Component({
     template: `
     <student-nav-bar></student-nav-bar>
-    Hello student`
+    Hello student
+    <student-quiz-list></student-quiz-list>`
 })
 
 export class StudentMainComponent {

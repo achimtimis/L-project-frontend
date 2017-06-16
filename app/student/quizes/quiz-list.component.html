@@ -1,0 +1,7 @@
+<h2>My ToDo Quizes:</h2>
+
+<ul class="quizes">
+		<li *ngFor="let quiz of quizes">
+			<p> Quiz: {{quiz.topic}}, Type: {{quiz.quizType}}, isTimed: {{quiz.isTimed}}
+		</li>
+</ul>

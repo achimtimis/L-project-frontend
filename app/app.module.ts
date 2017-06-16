@@ -17,13 +17,15 @@ import {ProfessorMainComponent} from './professor/professor-main.component'
 import {LoginRouteActivator} from './login/login-route.activator.component'
 import {QuizServiceComponent} from './service/quiz/quiz-service.component'
 import {SAQuizComponent} from './professor/createquiz/sa-quiz.component'
+import {QuizListComponent} from './student/quizes/quiz-list.component'
 import {AppRoutes} from './routes'; 
 
 @NgModule({
   imports: [BrowserModule, FormsModule, HttpModule, RouterModule.forRoot(AppRoutes)],
   declarations: [QuizAppComponent, LoginComponent, DefaultNavComponent,
      StudentMainComponent, StudentNavComponent,ProffessorNavComponent, ProfessorMainComponent,
-     SAQuizComponent],
+     SAQuizComponent,
+     QuizListComponent],
   bootstrap: [QuizAppComponent],
   providers: [AuthenticationService,QuizServiceComponent,
   {provide : "canDeactivateQuizCreation", useValue: checkFormWasPosted},
