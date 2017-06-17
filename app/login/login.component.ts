@@ -41,7 +41,7 @@ export class LoginComponent implements OnInit {
         }
       },
       error => {
-    //     // this.alertService.error(error);
+        alert("Username or password invalid!");
         this.loading = false;
       });
   }

@@ -1,5 +1,5 @@
 <prof-nav-bar></prof-nav-bar>
-<h2> Create Single Answer Quiz</h2>
+<h2> Create Input Answer Quiz</h2>
 <p>quiz topic is {{quiz?.topic}}</p>
 <p>quiz name is {{quiz?.name}}</p>
 
@@ -38,18 +38,7 @@
 		<h3> Add Question</h3>
 		<label for="questionText">Question Text</label> <input type="text" class="form-control" name="questionText" [(ngModel)]="tempQ.questionText"
 		 #documentType="ngModel" required />
-		<label for="value1">Question Options 1</label> <input type="text" class="form-control" name="value1" [(ngModel)]="tempO1.value"
-		 #documentType="ngModel" required />
-		<label for="value2">Question Options 2</label> <input type="text" class="form-control" name="value2" [(ngModel)]="tempO2.value"
-		 #documentType="ngModel" required />
-		<label for="value3">Question Options 3</label> <input type="text" class="form-control" name="value3" [(ngModel)]="tempO3.value"
-		 #documentType="ngModel" required />
-		<label for="value4">Question Options 4</label> <input type="text" class="form-control" name="value4" [(ngModel)]="tempO4.value"
-		 #documentType="ngModel" required />
 		<label for="score">Question Score</label> <input type="text" class="form-control" name="score" [(ngModel)]="tempQ.score"
-		 #documentType="ngModel" required />
-
-		<label for="score">Correct Answers</label> <input type="text" class="form-control" name="score" [(ngModel)]="tempCorrectAnswer"
 		 #documentType="ngModel" required />
 
 		<button type="button" class="btn btn-default" (click)="addQuestion()">Add Question</button>

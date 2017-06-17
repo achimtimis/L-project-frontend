@@ -14,10 +14,14 @@ export class AuthenticationService {
     return this.http.get('http://localhost:8001/users/login', { search: params })
       .map((response: Response) => {
         // login successful if there's a jwt token in the response
+        console.log(response);
         let user = response.json();
         if (user /*&& user.token*/) {  //TODO: manage user token.
           // store user details and jwt token in local storage to keep user logged in between page refreshes
           localStorage.setItem('currentUser', JSON.stringify(user));
+        }
+        else if (response.status == 500){
+          alert("aa");
         }
       }
       );

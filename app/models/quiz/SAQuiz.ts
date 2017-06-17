@@ -8,11 +8,12 @@ export class SAQuiz {
     timer:number;
     minScoreToPass:number;
     creatorId:string;
+    name:string;
 
 
     constructor(questionCreatedWithAnswers?:QuestionCreatedwithAnswer[],topic?: string,quizType?: string,
     isTimed?: boolean,timer?:number,minScoreToPass?:number,
-    creatorId?:string){
+    creatorId?:string,name?:string){
         this.questionCreatedWithAnswers = questionCreatedWithAnswers;
         this.topic = topic;
         this.quizType= quizType;
@@ -20,6 +21,7 @@ export class SAQuiz {
         this.timer = timer;
         this.minScoreToPass = minScoreToPass;
         this.creatorId = creatorId;
+        this.name = name;
     }
 
     set setTopic(topic:any){

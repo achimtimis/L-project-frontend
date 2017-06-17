@@ -1,7 +1,9 @@
 <h2>My ToDo Quizes:</h2>
 
+<div *ngIf="isDataAvailable == true">
 <ul class="quizes">
 		<li *ngFor="let quiz of quizes">
-			<button class = "btn btn-default" (click)="getQuiz(quiz.quiz_id)"> Quiz: {{quiz.topic}}, Type: {{quiz.quizType}}, isTimed: {{quiz.isTimed}}</button>
+			<button class = "btn btn-default" (click)="getQuiz(quiz.quiz_id)"> Quiz: {{quiz.name}}, Topic: {{quiz.topic}} Type: {{quiz.quizType}}, isTimed: {{quiz.isTimed}}</button>
 		</li>
 </ul>
+</div>

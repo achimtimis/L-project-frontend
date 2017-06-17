@@ -18,7 +18,7 @@ export class QuizResponseComponent implements OnInit {
     quiz: QuizRequest;
     quiz_id: string;
     isDataAvailable: boolean = false;
-    wasNotSaved = true;
+    wasNotSaved: boolean = true;
     timer: number;
     response: QuizResponseRequest;
     userid:string;
@@ -64,10 +64,10 @@ export class QuizResponseComponent implements OnInit {
     }
 
     submitResponse() {
-        this.wasNotSaved = true;
         console.log("form submitted");
         this.mapResponseObject();
         this.quizService.saveQuizResponse(this.response);
+        this.wasNotSaved = false;
         this.router.navigate(["/student"]);
     }
 
@@ -108,9 +108,10 @@ export class QuizResponseComponent implements OnInit {
                   if (this.timer == 15){
                       alert("You have 15 seconds left");
                   }else if (this.timer == 0){
-                      alert("Time is up!");
                       this.wasNotSaved = false;
+                      alert("Time is up!");
                       //todo send quiz failed to the backend
+                      this.quizService.sendQuizFailedEvent(this.userid, parseInt(this.quiz_id));
                       this.router.navigate(["student"]);
                   }
               });

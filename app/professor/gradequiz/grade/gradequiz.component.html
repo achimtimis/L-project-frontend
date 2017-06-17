@@ -1,0 +1,55 @@
+<prof-nav-bar></prof-nav-bar>
+<h2> Grade Quiz Response </h2>
+<p> Quiz name {{result?.quiz_name}} by student {{result?.userId}}</p>
+
+
+<div *ngIf="isDataAvailable == true">
+    <div class="col-md-6 col-md-offset-3" *ngIf="isDataAvailable">
+        <form name="form" (ngSubmit)="submitResponse()" #f="ngForm" novalidate>
+            <div class="form-group">
+            </div>
+            <ul>
+                <h3>Answers</h3>
+                <li *ngFor="let answer of result.answerList">
+                    <div class="well well-sm">
+
+                        <div class="form-group">
+                            <label for="questionText">Question: </label>
+                            <p class="questionText">{{answer.question.questionText}}</p>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputResponse">Student Response: </label>
+                            <p class="inputResponse">{{answer.inputResponse}}</p>
+                        </div>
+                        <div class="form-group">
+                            <p> Max score for question is: {{answer.question.score}}</p>
+                            <label for="score">Score: </label>
+                            <input type="text" class="form-control" name="score" [(ngModel)]="answer.graded_score" #documentType="ngModel" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="observations">Observations: </label>
+                            <input type="text" class="form-control" name="observations" [(ngModel)]="answer.observation" #documentType="ngModel" required>
+                        </div>
+                    </div>
+
+                </li>
+            </ul>
+            <div class="form-group">
+                <p>Set if passed: </p>
+                <p>The graded score is :{{totalScore}}</p>
+            </div>
+            <div class="form-group">
+                <label for="extraFeedback">Extra feedback: </label>
+                <input type="text" class="form-control" name="extraFeedback" [(ngModel)]="result.extraFeedback" #documentType="ngModel" required>
+
+            </div>
+
+            <div class="form-group">
+                <button [disabled]="loading" class="btn btn-primary">Send</button>
+                <img *ngIf="loading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA=="
+                />
+                <a [routerLink]="['/professor']" class="btn btn-link">Cancel</a>
+            </div>
+        </form>
+    </div>
+</div>

@@ -18,10 +18,17 @@ import {ProfessorMainComponent} from './professor/professor-main.component'
 import {LoginRouteActivator} from './login/login-route.activator.component'
 import {QuizServiceComponent} from './service/quiz/quiz-service.component'
 import {SAQuizComponent} from './professor/createquiz/sa-quiz.component'
+import {MAQuizComponent} from './professor/createquiz/ma-quiz.component'
+import {IAQuizComponent} from './professor/createquiz/ia-quiz.component'
+
 import {QuizListComponent} from './student/quizes/quiz-list.component'
 import {QuizResponseComponent} from './student/quizes/quizresponse/quiz-response.component'
 import {QuizResultListComponent} from './student/quizresult/quizresult-list.component'
 import {QuizResultComponent} from './student/quizresult/quizresult.component'
+import {QuizResultsListComponent} from './professor/quizresults/quizresults-list.component'
+import {GradeQuizComponent} from './professor/gradequiz/grade/gradequiz.component'
+
+import {GradeQuizListComponent} from './professor/gradequiz/grade-quiz.list.component'
 import {AppRoutes} from './routes'; 
 
 @NgModule({
@@ -30,7 +37,11 @@ import {AppRoutes} from './routes';
      StudentMainComponent, StudentNavComponent,ProffessorNavComponent, ProfessorMainComponent,
      SAQuizComponent,
      QuizListComponent,
-     QuizResponseComponent,QuizResultListComponent, QuizResultComponent],
+     QuizResponseComponent,QuizResultListComponent, QuizResultComponent, GradeQuizListComponent
+     ,QuizResultsListComponent,
+     MAQuizComponent,
+     IAQuizComponent,
+     GradeQuizComponent],
   bootstrap: [QuizAppComponent],
   providers: [AuthenticationService,QuizServiceComponent,
   {provide : "canDeactivateQuizCreation", useValue: checkFormWasPosted},

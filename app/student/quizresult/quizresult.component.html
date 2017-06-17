@@ -1,8 +1,25 @@
 <student-nav-bar></student-nav-bar>
 
+
 <div *ngIf="isDataAvailable == true">
-    
-    <div class="col-md-6 col-md-offset-3" *ngIf="isDataAvailable"> 
-        {{result.score}}
-    </div>
+Result For Quiz: {{result.quiz_name}}
+    <p>Score: {{result.score}} </p>
+    <p>Out of: {{result.totalScore}} </p>
+    <p>IsPassed: {{result.isPassed}} </p>
+    <p>IsCorrected: {{result.isCorrected}} </p>
+    <p>Feedback: {{result.extraFeedback}} </p>
+    <p>Total Duration: {{result.totalDuration}} </p>
+    <h2>Questions</h2>
+    <ul class="questions">
+		<li *ngFor="let qa of result.answeredQuestions">
+    <p>Question TExt: {{qa.question.questionText}} </p>
+    <p>Question score: {{qa.question.score}} </p>
+    <p>Your options: {{qa.answer.chosenOptions}} </p>
+    <p>Your input response: {{qa.answer.inputResponse}} </p>
+    <p>The correct answer:  </p>
+    <p>Your input response: {{qa.answer.inputResponse}} </p>
+    <p>Observation: {{qa.observation}} </p>
+		</li>
+</ul>
+
 </div>

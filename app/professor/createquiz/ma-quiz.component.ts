@@ -9,10 +9,10 @@ import { QuizServiceComponent } from '../../service/quiz/quiz-service.component'
 import { QuestionCreatedwithAnswer } from '../../models/quiz/QuestionCreatedWithAnswer'
 import { QuestionOptions } from '../../models/quiz/QuestionOptions'
 @Component({
-    templateUrl: 'app/professor/createquiz/sa-quiz.component.html'
+    templateUrl: 'app/professor/createquiz/ma-quiz.component.html'
 })
 
-export class SAQuizComponent implements OnInit {
+export class MAQuizComponent implements OnInit {
     ngOnInit(): void {
         // this.quiz = new SAQuiz();
         // this.quiz.setTopic("abc");
@@ -20,7 +20,7 @@ export class SAQuizComponent implements OnInit {
         console.log(tempUser);
         this.userid = tempUser.username;
         console.log(this.userid);
-        this.quiz = new SAQuiz([], "CS", "SINGLE_ANSWER", false, 0, 1, this.userid);
+        this.quiz = new SAQuiz([], "CS", "MULTIPLE_ANSWER", false, 0, 1, this.userid);
         this.tempQ = new QuestionCreatedwithAnswer();
         this.tempO1 = new QuestionOptions();
         this.tempO1.key = 1;
@@ -90,12 +90,12 @@ export class SAQuizComponent implements OnInit {
     }
     createNewQuiz() {
         console.log("fkin forms");
-        if (this.quiz.questionCreatedWithAnswers.length <= 0){
+        if (this.quiz.questionCreatedWithAnswers.length <= 0) {
             alert("Please add at least one question");
-        }else{
-        this.quizService.saveQuiz(this.quiz);
-        this.wasNotSaved = false;
-        this.router.navigate(['/professor']);
+        } else {
+            this.quizService.saveQuiz(this.quiz);
+            this.wasNotSaved = false;
+            this.router.navigate(['/professor']);
         }
     }
 
