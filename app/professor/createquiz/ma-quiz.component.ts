@@ -20,7 +20,7 @@ export class MAQuizComponent implements OnInit {
         console.log(tempUser);
         this.userid = tempUser.username;
         console.log(this.userid);
-        this.quiz = new SAQuiz([], "CS", "MULTIPLE_ANSWER", false, 0, 1, this.userid);
+        this.quiz = new SAQuiz([], "CS", "MULTIPLE_ANSWERS", false, 0, 1, this.userid);
         this.tempQ = new QuestionCreatedwithAnswer();
         this.tempO1 = new QuestionOptions();
         this.tempO1.key = 1;

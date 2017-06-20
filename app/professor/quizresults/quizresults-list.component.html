@@ -2,13 +2,20 @@
 <h2> All results to my quizes</h2>
 
 <div *ngIf="isDataAvailable == true">
-    
-    <div class="col-md-6 col-md-offset-3" *ngIf="isDataAvailable"> 
-        <ul>       
-                <li *ngFor="let result of results">
-            <p>Student result {{result.score}}</p>
-			<button class = "btn btn-default" (click)="getQuizResult(result.id)"> <p>Quiz result for Quiz {{result.quiz_name}}. {{result.passed == true? "PASSED" : "FAIlED"}}</p></button>
-                </li>    
-         </ul>   
+
+    <div class="col-md-6 col-md-offset-3" *ngIf="isDataAvailable">
+        <ul>
+            <li *ngFor="let result of results">
+                <div class="well well-sm">
+                    <p>Student result {{result.score}}</p>
+                    <button class="btn btn-default" (click)="getQuizResult(result.id)"> <p>Quiz result for Quiz {{result.quiz_name}}. {{result.passed == true? "PASSED" : "FAIlED"}}</p></button>
+                </div>
+            </li>
+        </ul>
     </div>
+</div>
+<h2 style="color:red">Analysis and statistics</h2>
+<div class="well well-sm">
+    <p>link 1 </p>
+    <p>link 2</p>
 </div>

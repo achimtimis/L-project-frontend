@@ -71,7 +71,7 @@ export class SAQuizComponent implements OnInit {
         this.tempQ.correctAnswers = cAnswers;
         this.quiz.questionCreatedWithAnswers.push(this.tempQ);
         console.log(this.quiz);
-        this.nrOfQuestions +=1 ;
+        this.nrOfQuestions += 1;
         this.totalScore += +this.tempQ.score;
         this.tempQ = new QuestionCreatedwithAnswer();
         this.tempO1 = new QuestionOptions();
@@ -90,12 +90,12 @@ export class SAQuizComponent implements OnInit {
     }
     createNewQuiz() {
         console.log("fkin forms");
-        if (this.quiz.questionCreatedWithAnswers.length <= 0){
+        if (this.quiz.questionCreatedWithAnswers.length <= 0) {
             alert("Please add at least one question");
-        }else{
-        this.quizService.saveQuiz(this.quiz);
-        this.wasNotSaved = false;
-        this.router.navigate(['/professor']);
+        } else {
+            this.quizService.saveQuiz(this.quiz);
+            this.wasNotSaved = false;
+            this.router.navigate(['/professor']);
         }
     }
 

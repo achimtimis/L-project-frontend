@@ -21,7 +21,7 @@ export class QuizServiceComponent {
         // params.set('username', username);
         // params.set('password', password);
         console.log("executing post with", quiz);
-        this.http.post('http://localhost:8002/quizes', quiz, {
+        this.http.post('http://localhost:8003/quizes', quiz, {
             headers: new Headers({
                 'Content-Type': 'application/json'
             })
@@ -36,7 +36,7 @@ export class QuizServiceComponent {
     }
 
     getAllQuizes(userid: string): Observable<QuizRequest[]> {
-        return this.http.get('http://localhost:8002/quizes/' + userid, {
+        return this.http.get('http://localhost:8003/quizes/' + userid, {
             headers: new Headers({
                 'Content-Type': 'application/json'
             })
@@ -45,7 +45,7 @@ export class QuizServiceComponent {
     }
 
     getQuizByid(quiz_id: number) {
-        var url = 'http://localhost:8002/quiz/' + quiz_id;
+        var url = 'http://localhost:8003/quiz/' + quiz_id;
         return this.http.get(url, {
             headers: new Headers({
                 'Content-Type': 'application/json'
@@ -54,7 +54,7 @@ export class QuizServiceComponent {
     }
 
     saveQuizResponse(quizResponse: QuizResponseRequest) {
-        var url = 'http://localhost:8002/quiz/response';
+        var url = 'http://localhost:8003/quiz/response';
         this.http.post(url, quizResponse, {
             headers: new Headers({
                 'Content-Type': 'application/json'
@@ -63,7 +63,7 @@ export class QuizServiceComponent {
             .map(res => res.json()).subscribe();
     }
     getAllQuizResultForAStudent(student_id: string): Observable<QuizStudentResultResponse[]> {
-        var url = 'http://localhost:8002/quiz/result/' + student_id;
+        var url = 'http://localhost:8003/quiz/result/' + student_id;
         return this.http.get(url, {
             headers: new Headers({
                 'Content-Type': 'application/json'
@@ -72,7 +72,7 @@ export class QuizServiceComponent {
     }
 
     getQuizResultForAStudentById(student_id: string, quiz_id: number): Observable<QuizStudentResultResponse> {
-        var url = 'http://localhost:8002/quiz/result/' + student_id + '/' + quiz_id;
+        var url = 'http://localhost:8003/quiz/result/' + student_id + '/' + quiz_id;
         return this.http.get(url, {
             headers: new Headers({
                 'Content-Type': 'application/json'
@@ -81,7 +81,7 @@ export class QuizServiceComponent {
     }
 
     getAllQuizesToCorrect(creator_id: string): Observable<QuizToCorrectRequest[]> {
-        var url = 'http://localhost:8002/quizes/tograde/' + creator_id;
+        var url = 'http://localhost:8003/quizes/tograde/' + creator_id;
         return this.http.get(url, {
             headers: new Headers({
                 'Content-Type': 'application/json'
@@ -90,7 +90,7 @@ export class QuizServiceComponent {
 
     }
     getAllQuizesResults(creator_id: string): Observable<QuizStudentResultResponse[]> {
-        var url = 'http://localhost:8002/quiz/result/prof/' + creator_id;
+        var url = 'http://localhost:8003/quiz/result/prof/' + creator_id;
         return this.http.get(url, {
             headers: new Headers({
                 'Content-Type': 'application/json'
@@ -99,7 +99,7 @@ export class QuizServiceComponent {
     }
 
     sendQuizFailedEvent(userid: string, quizid: number) {
-        var url = 'http://localhost:8002/quiz/response/failed/' + userid + '/' + quizid;
+        var url = 'http://localhost:8003/quiz/response/failed/' + userid + '/' + quizid;
         this.http.post(url, {
             headers: new Headers({
                 'Content-Type': 'application/json'
@@ -109,7 +109,7 @@ export class QuizServiceComponent {
     }
 
     getQuizToGradeByResponseId(responseid: number): Observable<QuizToCorrectRequest> {
-        var url = 'http://localhost:8002/quizes/tograde/response/' + responseid;
+        var url = 'http://localhost:8003/quizes/tograde/response/' + responseid;
         return this.http.get(url, {
             headers: new Headers({
                 'Content-Type': 'application/json'
@@ -118,7 +118,7 @@ export class QuizServiceComponent {
     }
 
     saveQuizResult(result: QuizToCorrectRequest) {
-        var url = 'http://localhost:8002/quizes/tograde';
+        var url = 'http://localhost:8003/quizes/tograde';
         this.http.post(url, result, {
             headers: new Headers({
                 'Content-Type': 'application/json'

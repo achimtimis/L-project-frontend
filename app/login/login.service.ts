@@ -11,7 +11,7 @@ export class AuthenticationService {
     let params: URLSearchParams = new URLSearchParams();
     params.set('username', username);
     params.set('password', password);
-    return this.http.get('http://localhost:8001/users/login', { search: params })
+    return this.http.get('http://localhost:8003/users/login', { search: params })
       .map((response: Response) => {
         // login successful if there's a jwt token in the response
         console.log(response);

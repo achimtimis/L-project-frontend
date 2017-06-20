@@ -28,35 +28,40 @@
 		</div>
 
 		<h2>List of Questions</h2>
-		<p> {{nrOfQuestions}} question, totalScore = {{totalScore}}.
-		<ul class="questions">
-			<li *ngFor="let question of quiz.questionCreatedWithAnswers">
-				<p> Question: {{question.questionText}}, Score: {{question.score}}
-			</li>
-		</ul>
+		<div class="well well-sm">
 
+			<p> {{nrOfQuestions}} question, totalScore = {{totalScore}}.</p>
+			<ul class="questions">
+				<li *ngFor="let question of quiz.questionCreatedWithAnswers">
+
+					<p> Question: {{question.questionText}}, Score: {{question.score}}</p>
+				</li>
+			</ul>
+		</div>
 		<h3> Add Question</h3>
-		<label for="questionText">Question Text</label> <input type="text" class="form-control" name="questionText" [(ngModel)]="tempQ.questionText"
-		 #documentType="ngModel" required />
-		<label for="value1">Question Options 1</label> <input type="text" class="form-control" name="value1" [(ngModel)]="tempO1.value"
-		 #documentType="ngModel" required />
-		<label for="value2">Question Options 2</label> <input type="text" class="form-control" name="value2" [(ngModel)]="tempO2.value"
-		 #documentType="ngModel" required />
-		<label for="value3">Question Options 3</label> <input type="text" class="form-control" name="value3" [(ngModel)]="tempO3.value"
-		 #documentType="ngModel" required />
-		<label for="value4">Question Options 4</label> <input type="text" class="form-control" name="value4" [(ngModel)]="tempO4.value"
-		 #documentType="ngModel" required />
-		<label for="score">Question Score</label> <input type="text" class="form-control" name="score" [(ngModel)]="tempQ.score"
-		 #documentType="ngModel" required />
+		<div class="well well-sm">
 
-		<label for="score">Correct Answers</label> <input type="text" class="form-control" name="score" [(ngModel)]="tempCorrectAnswer"
-		 #documentType="ngModel" required />
+			<label for="questionText">Question Text</label> <input type="text" class="form-control" name="questionText" [(ngModel)]="tempQ.questionText"
+			 #documentType="ngModel" required />
+			<label for="value1">Question Options 1</label> <input type="text" class="form-control" name="value1" [(ngModel)]="tempO1.value"
+			 #documentType="ngModel" required />
+			<label for="value2">Question Options 2</label> <input type="text" class="form-control" name="value2" [(ngModel)]="tempO2.value"
+			 #documentType="ngModel" required />
+			<label for="value3">Question Options 3</label> <input type="text" class="form-control" name="value3" [(ngModel)]="tempO3.value"
+			 #documentType="ngModel" required />
+			<label for="value4">Question Options 4</label> <input type="text" class="form-control" name="value4" [(ngModel)]="tempO4.value"
+			 #documentType="ngModel" required />
+			<label for="score">Question Score</label> <input type="text" class="form-control" name="score" [(ngModel)]="tempQ.score"
+			 #documentType="ngModel" required />
+			<label for="score">Correct Answers</label> <input type="text" class="form-control" name="score" [(ngModel)]="tempCorrectAnswer"
+			 #documentType="ngModel" required />
 
-		<button type="button" class="btn btn-default" (click)="addQuestion()">Add Question</button>
+			<button type="button" class="btn btn-default" (click)="addQuestion()">Add Question</button>
+		</div>
 		<h3>Done for question</h3>
 		<label for="minscore">Min Score To Pass</label>
-		 <input type="text" class="form-control" name="minscore" [(ngModel)]="quiz.minScoreToPass"
-		 #documentType="ngModel" required />
+		<input type="text" class="form-control" name="minscore" [(ngModel)]="quiz.minScoreToPass" #documentType="ngModel" required
+		/>
 		<div class="form-group">
 			<button [disabled]="loading" class="btn btn-primary">Create</button>
 			<img *ngIf="loading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA=="

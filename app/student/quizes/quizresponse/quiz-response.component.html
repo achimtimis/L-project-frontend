@@ -1,50 +1,52 @@
 <student-nav-bar></student-nav-bar>
 
 <div *ngIf="isDataAvailable == true">
-    
-<div *ngIf="quiz.isTimed == true">
-    <button (click) = "timerTic()">Start</button>
-    <p> Timer: {{timer}}</p>
+
+    <div *ngIf="quiz.isTimed == true">
+        <button (click)="timerTic()">Start</button>
+        <p> Timer: {{timer}}</p>
     </div>
     <div class="col-md-6 col-md-offset-3" *ngIf="isDataAvailable">
         <h2>Respond to the quiz {{quiz.name}}</h2>
-        
+
         <form name="form" (ngSubmit)="submitResponse()" #f="ngForm" novalidate>
             <div class="form-group">
             </div>
             <ul>
                 <h3>Question</h3>
                 <li *ngFor="let question of quiz?.questions">
-                    <div class="form-group">
-                        <label for="questionText">Question: </label>
-                        <p class="questionText">{{question.questionText}}</p>
-                    </div>
-                    <div class="form-group">
-                        <label for="score">Score: </label>
-                        <p class="score">{{question.score}}</p>
-                    </div>
-                    <div class="form-group">
-                        <p> Question Options</p>
-                        <ul>
-                            <li *ngFor="let option of question?.questionOptions">
-                                <div class="form-group">
-                                    <label for="questionOption">Question Option: {{option.key}}</label>
-                                    <p class="questionOption">{{option.value}}</p>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="form-group">
-                        <label for="chosenAnswers">Correct Option/s</label>
-                        <input type="text" class="form-control" name="score" [(ngModel)]="question.chosenAnswer" #documentType="ngModel" required
-                        />
-                    </div>
-                    <div class="form-group">
-                        <label for="inputField">Input Response</label>
-                        <input type="text" class="form-control" name="inputField" [(ngModel)]="question.inputField" #documentType="ngModel" required
-                        />
-                    </div>
+                    <div class="well well-sm">
 
+                        <div class="form-group">
+                            <label for="questionText">Question: </label>
+                            <p class="questionText">{{question.questionText}}</p>
+                        </div>
+                        <div class="form-group">
+                            <label for="score">Score: </label>
+                            <p class="score">{{question.score}}</p>
+                        </div>
+                        <div class="form-group">
+                            <p> Question Options</p>
+                            <ul>
+                                <li *ngFor="let option of question?.questionOptions">
+                                    <div class="form-group">
+                                        <label for="questionOption">Question Option: {{option.key}}</label>
+                                        <p class="questionOption">{{option.value}}</p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="form-group">
+                            <label for="chosenAnswers">Correct Option/s</label>
+                            <input type="text" class="form-control" name="score" [(ngModel)]="question.chosenAnswer" #documentType="ngModel" required
+                            />
+                        </div>
+                        <div class="form-group">
+                            <label for="inputField">Input Response</label>
+                            <input type="text" class="form-control" name="inputField" [(ngModel)]="question.inputField" #documentType="ngModel" required
+                            />
+                        </div>
+                    </div>
                 </li>
             </ul>
 

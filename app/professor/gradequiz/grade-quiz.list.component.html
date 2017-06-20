@@ -2,13 +2,15 @@
 <h2>List of quizes to correct</h2>
 
 <div *ngIf="isDataAvailable == true">
-    
-    <div class="col-md-6 col-md-offset-3" *ngIf="isDataAvailable"> 
-        <ul>       
-                <li *ngFor="let response of responses">
-            <p>Student response: {{response.userId}}</p>
-			<button class = "btn btn-default" (click)="gradeResponse(response.id)"> <p>Quiz reponse for Quiz {{response.quiz_id}}.</p></button>
-                </li>    
-         </ul>   
+
+    <div class="col-md-6 col-md-offset-3" *ngIf="isDataAvailable">
+        <ul>
+            <li *ngFor="let response of responses">
+                <div class="well well-sm">
+                    <p>Student response: {{response.userId}}</p>
+                    <button class="btn btn-default" (click)="gradeResponse(response.id)"> <p>Quiz reponse for Quiz {{response.quiz_id}}.</p></button>
+                </div>
+            </li>
+        </ul>
     </div>
 </div>
