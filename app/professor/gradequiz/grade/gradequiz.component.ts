@@ -28,7 +28,6 @@ export class GradeQuizComponent implements OnInit {
     userid: string;
     result_id: number;
     result: QuizToCorrectRequest;
-    minScoreToPass:number = 0;
     isDataAvailable: boolean = false;
     wasNotSaved: boolean = true;
 
@@ -48,15 +47,18 @@ export class GradeQuizComponent implements OnInit {
             err => console.log("error fetchig result"));
     }
     submitResponse(){
-        this.result.answerList.forEach(a => this.minScoreToPass += a.question.score);
+        delete this.result["passed"];
         console.log("the post object is ", this.result);
         this.result.score = this.totalScore;
-        if (this.result.score >= this.minScoreToPass){
+        console.log("computed score is", this.result.score);
+        if (this.result.score >= this.result.minScoreToPass){
             this.result.isPassed = true;
+            console.log("on passed");
         }else{
             console.log("wrong computation");
             this.result.isPassed = false;
         }
+    
         this.quizService.saveQuizResult(this.result);
         this.wasNotSaved = false;
         this.router.navigate(['/professor']);
@@ -67,7 +69,9 @@ export class GradeQuizComponent implements OnInit {
               .map((x) => {
                   var score:number = 0;
                   this.result.answerList.forEach(a => {
+                      if (!isNaN(a.graded_score)){
                       score += +a.graded_score;
+                  }
                 });
                 this.totalScore = score;
                       

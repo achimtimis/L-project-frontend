@@ -14,10 +14,17 @@
     <li *ngFor="let qa of result.answeredQuestions">
       <div class="well well-sm">
 
-        <p>Question TExt: {{qa.question.questionText}} </p>
-        <p>Question score: {{qa.question.score}} </p>
-        <p>Your options: {{qa.answer.chosenOptions}} </p>
-        <p>Your input response: {{qa.answer.inputResponse}} </p>
+        <p>Question Text: {{qa.question.questionText}} </p>
+        <p>Question score: {{qa.maxScore}} </p>
+        <p>Your response score: {{qa.score}}
+        <p>Options</p>
+        <li *ngFor="let co of qa.question.questionOptions">
+          <p>Option nr:{{co.key}}, Option value: {{co.value}}</p>
+        </li>
+        <p>Your response: </p>
+        <li *ngFor="let co of qa.answer.chosenOptions">
+          <p>{{co}}</p>
+        </li>
         <p>The correct answer: </p>
         <p>Your input response: {{qa.answer.inputResponse}} </p>
         <p>Observation: {{qa.observation}} </p>

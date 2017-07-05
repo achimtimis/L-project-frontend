@@ -118,11 +118,11 @@ checkBoxChange(number:number, isChecked: boolean) {
     }
     createNewQuiz() {
         console.log("fkin forms");
-        if (isNaN(this.quiz.minScoreToPass)) {
+        if (isNaN(this.quiz.minScoreToPass) || this.quiz.minScoreToPass > this.totalScore) {
             alert("The Minimum score to pass must be a valid number!");
             return;
         }
-        if (isNaN(this.quiz.timer)) {
+        if (isNaN(this.quiz.timer) || this.quiz.timer <= 0) {
             alert("The timer must be a valid number!");
             return;
         }
@@ -134,6 +134,7 @@ checkBoxChange(number:number, isChecked: boolean) {
             alert("Please add at least one question");
             return;
         }
+        this.quiz.totalScore = this.totalScore;
         this.quizService.saveQuiz(this.quiz);
         this.wasNotSaved = false;
         this.router.navigate(['/professor']);

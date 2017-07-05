@@ -27,12 +27,12 @@
 			<div *ngIf="f.submitted" class="help-block">Timer is required</div>
 		</div>
 		<div class="well well-sm">
-
-			<h2>List of Questions</h2>
-			<p> {{nrOfQuestions}} question, totalScore = {{totalScore}}.</p>
+			<p> {{nrOfQuestions}} questions, totalScore = {{totalScore}}.</p>
 			<ul class="questions">
 				<li *ngFor="let question of quiz.questionCreatedWithAnswers">
-					<p> Question: {{question.questionText}}, Score: {{question.score}}</p>
+					<div class="well well-sm">
+						<p> Question: {{question?.questionText}}, Score: {{question?.score}}</p>
+					</div>
 				</li>
 			</ul>
 		</div>
@@ -47,7 +47,7 @@
 			<button type="button" class="btn btn-primary" (click)="addQuestion()">Add Question</button>
 		</div>
 		<h3>Done for question</h3>
-		<label for="minscore">Min Score To Pass</label>
+		<label for="minscore">Min Score To Pass, max score is: {{totalScore}}</label>
 		<input type="text" class="form-control" name="minscore" [(ngModel)]="quiz.minScoreToPass" #documentType="ngModel" required
 		/>
 		<div class="form-group">

@@ -7,7 +7,7 @@
             <li *ngFor="let result of results">
                 <div class="well well-sm">
 
-                    <button class="btn btn-default" (click)="getQuizResult(result.id)"> <p>Quiz result for Quiz {{result.quiz_name}}. {{result.passed == true? "PASSED" : "FAIlED"}}</p></button>
+                    <button class="btn btn-default" (click)="getQuizResult(result.id)"> <p>Quiz result for Quiz {{result.quiz_name}}. {{result.isPassed == true? "PASSED" : "FAIlED"}}</p></button>
                 </div>
             </li>
         </ul>
