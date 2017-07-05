@@ -46,12 +46,16 @@ export class IAQuizComponent implements OnInit {
     }
 
     addQuestion() {
+        if (isNaN(this.tempQ.score)) {
+            alert("The Score must be a valid number!");
+            return;
+        }
         console.log("the list is", this.qoList);
         this.tempQ.questionOptions = new Array()
         this.tempQ.correctAnswers = new Array();;
         this.quiz.questionCreatedWithAnswers.push(this.tempQ);
         console.log(this.quiz);
-        this.nrOfQuestions +=1 ;
+        this.nrOfQuestions += 1;
         this.totalScore += +this.tempQ.score;
         this.tempQ = new QuestionCreatedwithAnswer();
         this.qoList = new Array();
@@ -62,13 +66,25 @@ export class IAQuizComponent implements OnInit {
     }
     createNewQuiz() {
         console.log("fkin forms");
+        if (isNaN(this.quiz.minScoreToPass)) {
+            alert("The Minimum score to pass must be a valid number!");
+            return;
+        }
+        if (isNaN(this.quiz.timer)) {
+            alert("The timer must be a valid number!");
+            return;
+        }
+        if (!this.quiz.name || this.quiz.name === "") {
+            alert("Quiz name must not be empty");
+            return;
+        }
         if (this.quiz.questionCreatedWithAnswers.length <= 0) {
             alert("Please add at least one question");
-        } else {
-            this.quizService.saveQuiz(this.quiz);
-            this.wasNotSaved = false;
-            this.router.navigate(['/professor']);
+            return;
         }
+        this.quizService.saveQuiz(this.quiz);
+        this.wasNotSaved = false;
+        this.router.navigate(['/professor']);
     }
 
 

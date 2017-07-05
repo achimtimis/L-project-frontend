@@ -31,10 +31,16 @@ export class SAQuizComponent implements OnInit {
         this.tempO4 = new QuestionOptions();
         this.tempO4.key = 4;
         this.qoList = new Array();
-
+        this.options = new Array();
+        this.options.push(1);
+        this.options.push(2);
+        this.options.push(3);
+        this.options.push(4);
 
 
     }
+    options: Array<number>;
+
     wasNotSaved = true;
     userid: string;
     quiz: SAQuiz;;
@@ -43,7 +49,7 @@ export class SAQuizComponent implements OnInit {
     tempO2: QuestionOptions;
     tempO3: QuestionOptions;
     tempO4: QuestionOptions;
-    tempCorrectAnswer: string;
+    tempCorrectAnswer: number;
     nrOfQuestions = 0;
     totalScore = 0;
     public qoList: QuestionOptions[] = [];
@@ -58,6 +64,10 @@ export class SAQuizComponent implements OnInit {
     }
 
     addQuestion() {
+        if (isNaN(this.tempQ.score)) {
+            alert("The Score must be a valid number!");
+            return;
+        }
         this.qoList.push(this.tempO1);
         this.qoList.push(this.tempO2);
         this.qoList.push(this.tempO3);
@@ -65,9 +75,7 @@ export class SAQuizComponent implements OnInit {
         console.log("the list is", this.qoList);
         this.tempQ.questionOptions = this.qoList;
         var cAnswers: number[] = [];
-        this.tempCorrectAnswer.split(",").forEach(function (answerOption) {
-            cAnswers.push(parseInt(answerOption));
-        });
+        cAnswers.push(this.tempCorrectAnswer);
         this.tempQ.correctAnswers = cAnswers;
         this.quiz.questionCreatedWithAnswers.push(this.tempQ);
         console.log(this.quiz);
@@ -90,14 +98,27 @@ export class SAQuizComponent implements OnInit {
     }
     createNewQuiz() {
         console.log("fkin forms");
+        if (isNaN(this.quiz.minScoreToPass)) {
+            alert("The Minimum score to pass must be a valid number!");
+            return;
+        }
+        if (isNaN(this.quiz.timer)) {
+            alert("The timer must be a valid number!");
+            return;
+        }
+        if (!this.quiz.name || this.quiz.name === "") {
+            alert("Quiz name must not be empty");
+            return;
+        }
         if (this.quiz.questionCreatedWithAnswers.length <= 0) {
             alert("Please add at least one question");
-        } else {
-            this.quizService.saveQuiz(this.quiz);
-            this.wasNotSaved = false;
-            this.router.navigate(['/professor']);
+            return;
         }
+        this.quizService.saveQuiz(this.quiz);
+        this.wasNotSaved = false;
+        this.router.navigate(['/professor']);
     }
+}
 
 
 

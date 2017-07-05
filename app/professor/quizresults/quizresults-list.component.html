@@ -8,14 +8,14 @@
             <li *ngFor="let result of results">
                 <div class="well well-sm">
                     <p>Student result {{result.score}}</p>
-                    <button class="btn btn-default" (click)="getQuizResult(result.id)"> <p>Quiz result for Quiz {{result.quiz_name}}. {{result.passed == true? "PASSED" : "FAIlED"}}</p></button>
+                    <button class="btn btn-default" (click)="getQuizResult(result.id)"> <p>Quiz result for Quiz {{result.quiz_name}}. {{result.passed == true? "PASSED" : "FAILED"}}</p></button>
                 </div>
             </li>
         </ul>
     </div>
 </div>
 <h2 style="color:red">Analysis and statistics</h2>
-<div class="well well-sm">
-    <p>link 1 </p>
-    <p>link 2</p>
-</div>
+
+<iframe src="http://localhost:5601/app/kibana#/visualize/edit/98aee920-5741-11e7-bde0-f944889b722a?embed=true&_g=()&_a=(filters:!(),linked:!f,query:(query_string:(analyze_wildcard:!t,query:'*')),uiState:(),vis:(aggs:!((enabled:!t,id:'1',params:(),schema:metric,type:count),(enabled:!t,id:'2',params:(field:quizName.keyword,order:desc,orderBy:'1',size:5),schema:segment,type:terms),(enabled:!t,id:'3',params:(customInterval:'2h',extended_bounds:(),field:'@timestamp',interval:auto,min_doc_count:1),schema:segment,type:date_histogram)),listeners:(),params:(addLegend:!t,addTooltip:!t,isDonut:!f,legendPosition:right),title:'quiz-name+and+date+pie+chart',type:pie))" height="600" width="800"></iframe>
+<br>
+<iframe src="http://localhost:5601/app/kibana#/visualize/edit/e4fc2f80-5742-11e7-bde0-f944889b722a?embed=true&_g=()&_a=(filters:!(),linked:!f,query:(query_string:(analyze_wildcard:!t,query:'*')),uiState:(vis:(defaultColors:('0+-+1':'rgb(247,252,245)','1+-+2':'rgb(199,233,192)','2+-+3':'rgb(116,196,118)','3+-+3':'rgb(35,139,69)'))),vis:(aggs:!((enabled:!t,id:'1',params:(),schema:metric,type:count),(enabled:!t,id:'2',params:(customLabel:'Answered+Correclty',field:isAnsweredCorrectly.keyword,order:desc,orderBy:'1',size:5),schema:group,type:terms),(enabled:!t,id:'3',params:(customLabel:Students,field:student.keyword,order:desc,orderBy:'1',size:5),schema:segment,type:terms)),listeners:(),params:(addLegend:!t,addTooltip:!t,colorSchema:Greens,colorsNumber:4,colorsRange:!(),enableHover:!f,invertColors:!f,legendPosition:right,percentageMode:!f,setColorRange:!f,times:!(),valueAxes:!((id:ValueAxis-1,labels:(color:%23555,rotate:0,show:!f),scale:(defaultYExtents:!f,type:linear),show:!f,type:value))),title:'student%2Fanswer+boolean+status',type:heatmap))" height="600" width="800"></iframe>

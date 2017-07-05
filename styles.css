@@ -32,3 +32,13 @@ button {
 .toast-warning {
   background-color: #f89406;
 }
+
+select {
+  background: black; 
+  box-shadow: inset 20px 20px #f00
+} 
+select option {
+  background: black; 
+  color: red; 
+  box-shadow: inset 20px 20px #f00
+} 

@@ -68,6 +68,7 @@ export class QuizResponseComponent implements OnInit {
         this.mapResponseObject();
         this.quizService.saveQuizResponse(this.response);
         this.wasNotSaved = false;
+        this.timer = -1;
         this.router.navigate(["/student"]);
     }
 
@@ -113,6 +114,9 @@ export class QuizResponseComponent implements OnInit {
                       //todo send quiz failed to the backend
                       this.quizService.sendQuizFailedEvent(this.userid, parseInt(this.quiz_id));
                       this.router.navigate(["student"]);
+                  }
+                  else if (this.timer < 0){
+                      return;
                   }
               });
     }
