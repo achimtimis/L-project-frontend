@@ -8,10 +8,13 @@
       <ul class="nav navbar-nav">
         <li>
           <a class="nav-link" [routerLink]="['/student']" routerLinkActive="active">Home</a>
+        </li>
+        <li><a class="nav-link" [routerLink]="['/student/results']" routerLinkActive="active">My Quiz Results</a>
+        </li>
+        <li><a class="nav-link" [routerLink]="['/student/results/stats']" routerLinkActive="active">My Stats</a>
+        </li>
 
-          <li>
-            <a class="nav-link" [routerLink]="['/student/results']" routerLinkActive="active">My Quiz Results</a>
-            <li><button class="btn btn-default" (click)="logout()">Logout</button></li>
+        <li><button class="btn btn-default" (click)="logout()">Logout</button></li>
       </ul>
     </div>
   </div>

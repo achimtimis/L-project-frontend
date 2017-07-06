@@ -42,4 +42,9 @@ export class QuizResultsListComponent implements OnInit {
             );
     }
 
+    getQuizResult(quizresultid:number){
+        console.log("navigating to quiz result", quizresultid);
+        this.router.navigate(['/professor/results/quiz'], { queryParams: { result_id: quizresultid } });
+    }
+
 }

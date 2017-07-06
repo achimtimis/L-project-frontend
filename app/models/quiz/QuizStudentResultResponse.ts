@@ -12,6 +12,7 @@ export class QuizStudentResultResponse{
     isCorrected:boolean;
     extraFeedback:string;
     totalDuration:number;
+    student:string;
 
     constructor(
     id?:number,
@@ -24,6 +25,7 @@ export class QuizStudentResultResponse{
     isCorrected?:boolean,
     extraFeedback?:string,
     totalDuration?:number,
+    student?:string
     ){
         this.id = id;
         this.quiz_id = quiz_id;
@@ -35,5 +37,6 @@ export class QuizStudentResultResponse{
         this.isPassed = isPassed;
         this.extraFeedback = extraFeedback;
         this.totalDuration = totalDuration;
+        this.student = student;
     }
 }

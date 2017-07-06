@@ -13,6 +13,8 @@ import {QuizResultsListComponent} from './professor/quizresults/quizresults-list
 import {MAQuizComponent} from './professor/createquiz/ma-quiz.component'
 import {IAQuizComponent} from './professor/createquiz/ia-quiz.component'
 import {GradeQuizComponent} from './professor/gradequiz/grade/gradequiz.component'
+import {ProfessorQuizResultComponent} from './professor/quizresults/quiz-result.component'
+import {StudentQuizStats} from './student/quizresult/quiz-stats'
 
 
 export const AppRoutes:Routes = [
@@ -20,9 +22,11 @@ export const AppRoutes:Routes = [
     {path : 'create/ia' ,component : IAQuizComponent, canActivate: [LoginRouteActivator], data: { roles: ['ADMIN']}, canDeactivate:["canDeactivateQuizCreation"]},
     {path : 'create/ma' ,component : MAQuizComponent, canActivate: [LoginRouteActivator], data: { roles: ['ADMIN']}, canDeactivate:["canDeactivateQuizCreation"]},
     {path : 'create/sa' ,component : SAQuizComponent, canActivate: [LoginRouteActivator], data: { roles: ['ADMIN']}, canDeactivate:["canDeactivateQuizCreation"]},
+    {path: 'student/results/stats', component:StudentQuizStats, canActivate: [LoginRouteActivator], data: { roles: ['NORMAL_USER']}} ,
     {path: 'student/results/quiz', component:QuizResultComponent, canActivate: [LoginRouteActivator], data: { roles: ['NORMAL_USER']}} ,
     {path: 'student/results', component:QuizResultListComponent, canActivate: [LoginRouteActivator], data: { roles: ['NORMAL_USER']}} ,
     {path : 'student', component: StudentMainComponent,  canActivate: [LoginRouteActivator], data: { roles: ['NORMAL_USER']}},
+    {path : 'professor/results/quiz', component: ProfessorQuizResultComponent, canActivate: [LoginRouteActivator], data: { roles: ['ADMIN']}},
     {path : 'professor/results', component: QuizResultsListComponent, canActivate: [LoginRouteActivator], data: { roles: ['ADMIN']}},
     {path : 'professor/tograde/response', component: GradeQuizComponent, canActivate: [LoginRouteActivator], data: { roles: ['ADMIN']}},
     {path : 'professor/tograde', component: GradeQuizListComponent, canActivate: [LoginRouteActivator], data: { roles: ['ADMIN']}},

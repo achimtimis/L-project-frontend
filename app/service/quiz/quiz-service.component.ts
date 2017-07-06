@@ -126,5 +126,14 @@ export class QuizServiceComponent {
         })
             .map(res => res.json()).subscribe();
     }
+    getQuizResultbyId(quizresultid: number): Observable<QuizStudentResultResponse> {
+        var url = 'http://localhost:8003/quizes/result/' + quizresultid;
+        return this.http.get(url, {
+            headers: new Headers({
+                'Content-Type': 'application/json'
+            })
+        })
+            .map(res => res.json());
+    }
 
 }

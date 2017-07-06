@@ -70,7 +70,7 @@ export class IAQuizComponent implements OnInit {
             alert("The Minimum score to pass must be a valid number!");
             return;
         }
-        if (isNaN(this.quiz.timer) || this.quiz.timer <= 0) {
+        if (isNaN(this.quiz.timer) || (this.quiz.isTimed == true && this.quiz.timer <= 0)) {
             alert("The timer must be a valid number!");
             return;
         }

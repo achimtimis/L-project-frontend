@@ -25,10 +25,13 @@ import {QuizListComponent} from './student/quizes/quiz-list.component'
 import {QuizResponseComponent} from './student/quizes/quizresponse/quiz-response.component'
 import {QuizResultListComponent} from './student/quizresult/quizresult-list.component'
 import {QuizResultComponent} from './student/quizresult/quizresult.component'
+import {StudentQuizStats} from './student/quizresult/quiz-stats'
+
 import {QuizResultsListComponent} from './professor/quizresults/quizresults-list.component'
 import {GradeQuizComponent} from './professor/gradequiz/grade/gradequiz.component'
 
 import {GradeQuizListComponent} from './professor/gradequiz/grade-quiz.list.component'
+import {ProfessorQuizResultComponent} from './professor/quizresults/quiz-result.component'
 import {AppRoutes} from './routes'; 
 
 @NgModule({
@@ -41,7 +44,9 @@ import {AppRoutes} from './routes';
      ,QuizResultsListComponent,
      MAQuizComponent,
      IAQuizComponent,
-     GradeQuizComponent],
+     GradeQuizComponent,
+     ProfessorQuizResultComponent,
+     StudentQuizStats],
   bootstrap: [QuizAppComponent],
   providers: [AuthenticationService,QuizServiceComponent,
   {provide : "canDeactivateQuizCreation", useValue: checkFormWasPosted},
